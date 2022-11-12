@@ -80,16 +80,18 @@ const menu_info arcadeMenuInfo =
 
 static const char PROGMEM shortcutMenuStrings0[] = "Open rick roll";
 static const char PROGMEM shortcutMenuStrings1[] = "Login to PC";
+static const char PROGMEM shortcutMenuStrings2[] = "Lock PC";
 
 static const char* const PROGMEM shortcutMenuStrings[] =
 {
   shortcutMenuStrings0,
-  shortcutMenuStrings1
+  shortcutMenuStrings1,
+  shortcutMenuStrings2
 };
 
 const menu_info shortcutMenuInfo =
 {
-  2,
+  3,
   shortcutMenuStrings,
   shortcutMenu,
 };
