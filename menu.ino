@@ -306,6 +306,13 @@ void login() {
 }
 
 
+void lock() {
+  Keyboard.press(KEY_LEFT_GUI);  // hold win key
+  Keyboard.press(0x6C); // hold "l"
+  Keyboard.releaseAll();  // release both win and l key together
+}
+
+
 void shortcutMenu(uint8_t selection) {
   if (menu_debug_print)SerialMonitorInterface.println("shortcutMenuHandler");
   if (selection == 0) {  // rick roll
@@ -313,6 +320,9 @@ void shortcutMenu(uint8_t selection) {
   }
   if (selection == 1) { // login to pc
     login();
+  }
+  if (selection == 2) { // lock pc
+    lock();    
   }
 }
 
