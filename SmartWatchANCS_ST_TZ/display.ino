@@ -2,7 +2,6 @@
 const uint8_t displayStateHome = 0x01;
 const uint8_t displayStateMenu = 0x02;
 const uint8_t displayStateEditor = 0x03;
-const uint8_t displayStateSprite = 0x04; // edited
 
 uint8_t currentDisplayState = displayStateHome;
 void (*menuHandler)(uint8_t) = NULL;
@@ -10,7 +9,6 @@ uint8_t (*editorHandler)(uint8_t, int*, char*, void (*)()) = NULL;
 
 
 const uint8_t upButton = TSButtonUpperRight;
-const uint8_t spriteButton = TSButtonUpperRight; // edited
 const uint8_t downButton = TSButtonLowerRight;
 const uint8_t selectButton = TSButtonLowerLeft;
 const uint8_t backButton = TSButtonUpperLeft;
@@ -25,9 +23,6 @@ void buttonPress(uint8_t buttons) {
       menuHandler(0);
     } else if (buttons == menuButton) {
       menuHandler = viewMenu;
-      menuHandler(0);
-    } else if (buttons == spriteButton) {
-      menuHandler = drawBitmap;
       menuHandler(0);
     }
   } else if (currentDisplayState == displayStateMenu) {

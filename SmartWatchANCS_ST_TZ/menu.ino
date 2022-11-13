@@ -63,19 +63,19 @@ const menu_info mainMenuInfo =
 };
 
 
-static const char PROGMEM arcadeMenuStrings0[] = "Sprites";
+// static const char PROGMEM arcadeMenuStrings0[] = "Sprites";
 
-static const char* const PROGMEM arcadeMenuStrings[] =
-{
-  arcadeMenuStrings0
-};
+// static const char* const PROGMEM arcadeMenuStrings[] =
+// {
+//   arcadeMenuStrings0
+// };
 
-const menu_info arcadeMenuInfo =
-{
-  1,
-  arcadeMenuStrings,
-  arcadeMenu,
-};
+// const menu_info arcadeMenuInfo =
+// {
+//   1,
+//   arcadeMenuStrings,
+//   arcadeMenu,
+// };
 
 
 static const char PROGMEM shortcutMenuStrings0[] = "Open rick roll";
@@ -140,12 +140,11 @@ const menu_info dateTimeMenuInfo =
   dateTimeMenu,
 };
 
-const menu_info menuList[] = {mainMenuInfo, arcadeMenuInfo, shortcutMenuInfo, settingsMenuInfo, dateTimeMenuInfo};
+const menu_info menuList[] = {mainMenuInfo, shortcutMenuInfo, settingsMenuInfo, dateTimeMenuInfo};
 #define mainMenuIndex 0
-#define arcadeTimeMenuIndex 1
-#define shortcutMenuIndex 2
-#define settingsMenuIndex 3
-#define dateTimeMenuIndex 4
+#define shortcutMenuIndex 1
+#define settingsMenuIndex 2
+#define dateTimeMenuIndex 3
 
 
 int currentVal = 0;
@@ -225,7 +224,12 @@ uint8_t editInt(uint8_t button, int *inVal, char *intName, void (*cb)()) {
 void mainMenu(uint8_t selection) {
   if (menu_debug_print)SerialMonitorInterface.println("mainMenuHandler");
   if (selection == 0) { // arcade
-    newMenu(arcadeTimeMenuIndex);
+    delay(200);
+    bool start = true;
+    gameStart(start);
+    currentDisplayState = displayStateHome;
+    initHomeScreen();
+    
   }
   if (selection == 1) { // shortcuts
     newMenu(shortcutMenuIndex);
@@ -252,14 +256,6 @@ void saveChangeCallback() {
 #endif
   if (menu_debug_print)SerialMonitorInterface.print("set time ");
   if (menu_debug_print)SerialMonitorInterface.println(dateTimeVariable);
-}
-
-
-void arcadeMenu(uint8_t selection) {
-  if (menu_debug_print)SerialMonitorInterface.println("arcadeMenuHandler");
-  if (selection == 0) { // sprites game
-    display.print("hurhur");
-  }
 }
 
 
